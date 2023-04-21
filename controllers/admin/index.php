@@ -4,24 +4,21 @@ use Core\App;
 use Core\Database;
 
 $db = App::resolve(Database::class);
+$image = $_FILES['image']['tmp_name'];
+$imageData = file_get_contents($image);
 
-
-// Check if an image was uploaded
-if(isset($_FILES['image']) && !empty($_FILES['image']['tmp_name'])) {
-    // Move the uploaded image to a permanent location
-    $uploadDir = 'uploads/';
-    $uploadFile = $uploadDir . basename($_FILES['image']['name']);
-    move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
-    $imagePath = '/' . $uploadFile;
-} else {
-    $imagePath = null;
-}
-
-// Fetch all news from the database
-$news = $db->query('SELECT * FROM `news`')->get();
+$news = $db->query('SELECT * FROM `news`',[
+    'title' => $_POST['title'],
+    'authorname' => $_POST['authorname'],
+    'date' => $_POST['date'],
+    'category' => $_POST['category'],
+    'content' => $_POST['content'],
+    'image' => $imageData
+])->get();
 
 view("admin/index.view.php", [
     'heading' => 'Newsportal',
     'news' => $news,
+    'category'=>$category
    
 ]);

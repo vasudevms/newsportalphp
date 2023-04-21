@@ -43,10 +43,10 @@ function view($path, $attributes = [])
     require base_path('views/' . $path);
 }
 
-function login($username)
+function login($user)
 {
-    $_SESSION['username'] = [
-        'username' => $username['username']
+    $_SESSION['user'] = [
+        'username' => $user['username']
     ];
 
     session_regenerate_id(true);

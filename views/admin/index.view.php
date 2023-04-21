@@ -3,21 +3,16 @@
 <?php require base_path('views/partials/banner.php') ?>
 
 <main>
+  <div class="h-full bg-gray-200">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    
     <div class="flow-root">
-       <div class="float-left"> 
-    <h2 class="text-xl font-bold">Categories</h2>
-    <?php foreach ($news as $newses) : ?>
-                <li><div>
-                    <a href="/news" class="text-blue-500 hover:underline">
-                        <?=($newses['category']) ?></li></a>
-                        <?php endforeach; ?>
-
-    </div>
-
-    <form method="POST" action="/add" >
+       
+   <form method="POST" action="/add" >
     
     <button
-    type="submit"   
+    type="submit"  
     class="float-right rounded-md border border-transparent bg-gray-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
      >Add
     </button> </form>
@@ -26,120 +21,61 @@
   
 <div class="" style="width: 30rem;">
 
-
-
-
-
-<!-- <table class="table" >
+    <form class="mt-8 space-y-6" action="/store" method="POST"> 
+    <div class="space-y-px">
+    <div class="float-center">
+  
+<table class="table align item justify-center" >
 
 <thead>
 
+<tr>
+     <th scope="col">Sl.no</th>
+      <th scope="col">Title</th>
+      <th scope="col">Authorname</th>
+      <th scope="col">Date</th>
+      <th scope="col">Category</th>
+      <th scope="col">Content</th>
+      <th scope="col">Image</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Comments</th>
+      <th scope="col">Delete</th>
+
+    </tr>
   </thead>
   <tbody>
  
     
-   <?php foreach($news as $newses):?>  
+   <?php foreach($news as $newses):?> 
+    <?php $no+=1 ?> 
     <tr>
-       
-   
+      <td><?=$no ?></th>
+      <td><?=$newses['title'];?></td>
+      <td><?=$newses['authorname'];?></td>
+      <td><?=$newses['date'];?></td>
       
-      <?php echo "<td>" . $newses['title'] . "</td>";
-            echo "<td>" . $newses['authorname'] . "</td>";
-            echo "<td>" . $newses['category'] . "</td>";
-            echo "<td>" ."<img src=".$newses['image'].' width=100px height="100px" class="card-img-top">' . "</td>";
-            echo "</tr>";  
-          ?>
+      <td><?=$newses['category'];?></td>
+      <td><?=$newses['content'];?></td>
+      <td style="width:250px; height:250px;"> <?='<img src="data:images/jpeg;base64,'.base64_encode($newses['image']).'" width="1000px" height="1000px" />'?> </a></td>     
+      <td> <a href="/edit?id=<?=$newses['id']?>" class="bg-gray-400 text-gray-800 border border-current px-3 py-1 rounded">Edit</a></td>
+   
+     <td> <a href="/commentverify?id=<?=$newses['id']?>" class="bg-gray-400 text-gray-800 border border-current px-3 py-1 rounded">Comments</a></td><br>
+
+     <td ><a href="/destroy?id=<?=$newses['id']?>"  onclick="if (!confirm('Are you sure?')) { return false }">DELETE</a></td>
+    
+    </tr>
     <?php endforeach ;?> 
   
   </tbody>
-</table> -->
- </form>    
-
+</table> 
+  </form>   
   
-                    
-
-
-  <img src="https://drop.ndtv.com/albums/SPORTS/ipl-2023no-ball_638162126656973699/638162129010709159.png" class="card-img-top" alt="">
-  <div class="card-body">
-    <p class="card-text">Chennai Super Kings defeated Lucknow Super Giants by 12 runs in their IPL 2023 clash on Monday. However, pacer Tushar Deshpande bowled 3 no-balls and 4 wides during the match, which nearly took CSK on the verge of defeat</p>
-  </div>
-  <form method="GET" action=/edit>
-  <button
-    type="submit"   
-    class="float-right rounded-md border border-transparent bg-gray-400 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-     >Edit
-    </button></form>
-    <form method="GET" action=/comment>
-    <button
-    type="submit"   
-    class="float-right rounded-md border border-transparent bg-gray-400 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-     >Comments
-    </button>  </form>
-</div>
-
-</div>
-
-
-<div class="flex justify-center bg-blue shadow">
-<div class="" style="width: 30rem;">
-  <img src="https://drop.ndtv.com/albums/SPORTS/ipl-2023no-ball_638162126656973699/638162129010709159.png" class="card-img-top" alt="">
-  <div class="card-body">
-    <p class="card-text">Chennai Super Kings defeated Lucknow Super Giants by 12 runs in their IPL 2023 clash on Monday. However, pacer Tushar Deshpande bowled 3 no-balls and 4 wides during the match, which nearly took CSK on the verge of defeat</p>
-  </div>
-</div>
-</div>
-
-<div class="flex justify-center bg-blue shadow">
-<div class="" style="width: 30rem;">
-  <img src="https://drop.ndtv.com/albums/SPORTS/ipl-2023no-ball_638162126656973699/638162129010709159.png" class="card-img-top" alt="">
-  <div class="card-body">
-    <p class="card-text">Chennai Super Kings defeated Lucknow Super Giants by 12 runs in their IPL 2023 clash on Monday. However, pacer Tushar Deshpande bowled 3 no-balls and 4 wides during the match, which nearly took CSK on the verge of defeat</p>
-  </div>
-</div>
-</div>
-
-        
-    </div>
-</main>
+  </tbody>
+</table>
+ </form>    
 
 <?php require base_path('views/partials/footer.php') ?>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <ul>
-<?php foreach ($notes as $note) : ?>
-                <li><div>
-                    <a href="/note?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline">
-                        <?= htmlspecialchars($note['body']) ?></li></a>
-                    
-                   <form method="POST" action="/notes?id=<?=$note['id'] ?>" >
-                    <input type="hidden"name="_method" value="DELETE">
-                    <input type="hidden"name="id" value="<?=$note['id']?>">
-                    <button type="submit" class="text-red-500 mr-auto">Delete</button>
-                   
-            
-            </form>
-         <?php endforeach; ?>
-
-        </ul> -->
-
-        <!-- <p class="mt-6">
-            <a href="/notes/create" class="text-blue-500 hover:underline">Create Note</a>
-        </p> -->
