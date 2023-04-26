@@ -13,7 +13,6 @@ $comments=$db->query('select * from comments where news_id=:id',[
 ])->get();
 
 view("admin/commentverify.view.php", [
-    'heading' => 'Comments',
     'comments' => $comments,
    
 ]);

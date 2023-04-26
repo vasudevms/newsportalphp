@@ -9,6 +9,5 @@ $comments = $db->query('select * from comments where id = :id', [
 ])->get();
 
 view('verify/verifyedit.view.php', [
-    'heading' => 'Verify',
     'comments' => $comments,
 ]);

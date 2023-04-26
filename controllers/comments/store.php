@@ -43,7 +43,6 @@ $db->query('INSERT INTO `comments`(`name`, `email`, `comments`, `news_id`, `veri
 ]);
 
 view("news/viewpage.view.php", [
-    'heading' => 'Home',
     'news'=>$news,
     'comments'=>$comments,
     'news_id'=>$news_id

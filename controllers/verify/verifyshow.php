@@ -8,6 +8,5 @@ $db = App::resolve(Database::class);
 $comments = $db->query('select * from comments')->get();
 
 view("verify/showverify.view.php", [
-    'heading' => 'Comments',
     'comments' => $comments
 ]);

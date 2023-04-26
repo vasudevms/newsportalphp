@@ -27,10 +27,9 @@ if (!Validator::string($_POST['category'], 3, 100)) {
 if (!Validator::string($_POST['content'], 10, 1000)) {
     $errors['name'] = 'Please enter valid Content';
 }
-if ($_POST['image'] == null) {
+if(empty($imageData)){
     $errors['image'] = 'Please insert valid Image';
 }
-
 if (!empty($errors)) {
     return view('/news/edit.view.php', [
         'errors' => $errors

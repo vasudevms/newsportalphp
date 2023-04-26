@@ -24,7 +24,6 @@ $comments=$db->query('select * from comments where id=:id',[
 ])->get();
 
 view("admin/commentverify.view.php", [
-    'heading' => 'Comments',
     'comments' => $comments,
      'id'=>$news_id
    

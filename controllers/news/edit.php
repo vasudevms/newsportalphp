@@ -10,7 +10,5 @@ $news = $db->query('select * from news where id= :id',[
     ])->get();
 
 view("news/edit.view.php", [
-    'heading' => 'Edit News',
-    'errors' => [],
     'news' => $news
 ]);

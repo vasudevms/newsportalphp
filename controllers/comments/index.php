@@ -7,6 +7,5 @@ $db = App::resolve(Database::class);
 $comments = $db->query('SELECT * FROM `comments` ')->get();
 
 view("comments/show.view.php", [
-    'heading' => 'Comments',
     'comments' => $comments
 ]);

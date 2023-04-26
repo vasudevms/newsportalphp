@@ -9,6 +9,5 @@ $categories = $db->query('SELECT distinct category FROM `news` where category=:c
 ])->find();
 
 view("comments/show.view.php", [
-    'heading' => 'Categories',
     'categories' => $categories
 ]);

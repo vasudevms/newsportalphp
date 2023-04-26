@@ -25,9 +25,9 @@ $router->get('/showcomments','controllers/comments/show.php');
 $router->get('/viewcomments','controllers/comments/store.php');
 
 $router->post('/add','controllers/admin/create.php');
-$router->get('/admin','controllers/admin/index.php');
-$router->get('/commentverify','controllers/admin/comments.php');
-$router->post('/commentverify','controllers/admin/comments.php');
+$router->get('/admin','controllers/admin/index.php')->only('auth');
+$router->get('/commentverify','controllers/admin/comments.php')->only('auth');
+$router->post('/commentverify','controllers/admin/comments.php')->only('auth');
 
 $router->get('/verification','controllers/verify/verification.php');
 $router->get('/verify','controllers/verify/verify.php');

@@ -8,6 +8,5 @@ $db = App::resolve(Database::class);
 $news = $db->query('select * from news')->get();
 
 view("news/show.view.php", [
-    'heading' => 'News',
     'news' => $news
 ]);

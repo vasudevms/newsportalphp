@@ -10,7 +10,6 @@ $news = $db->query('SELECT * FROM news WHERE category = :category', [
 ])->get();
 
 view("index.view.php", [
-    'heading' => 'Home',
     'news' => $news,
     'category' => $category
 ]);

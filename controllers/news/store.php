@@ -24,7 +24,7 @@ if ( !Validator::string($_POST['category'],3,100)) {
 if ( !Validator::string($_POST['content'],10,1000)) {
     $errors['content'] = 'Please enter valid Content';
 }
-if($_POST['image']==null){
+if(empty($imageData)){
     $errors['image'] = 'Please insert valid Image';
 }
 if (! empty($errors)) {
@@ -48,3 +48,4 @@ $news=$db->query('INSERT INTO news(title, authorname, date, category, content, i
 
 header('location: /admin');
 die();
+

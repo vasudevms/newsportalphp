@@ -1,6 +1,3 @@
 <?php
 
-view("news/create.view.php", [
-    'heading' => 'News portal',
-    'errors' => []
-]);
+view("news/create.view.php");

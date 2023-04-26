@@ -14,13 +14,12 @@ $news = $db->query('select * from news where id= :id',[
 $news_id=$_GET['id'];
 
 
-$comments=$db->query('select * from comments where news_id=:id AND verify = :verify',[
+$comments=$db->query('select * from comments where news_id=:id AND verify = :verify order by id desc ',[
     'id' => $_GET['id'],
     'verify'=>'verify'
 ])->get();
 
 view("news/viewpage.view.php", [
-    'heading' => 'Home',
     'news'=>$news,
     'comments'=>$comments,
     'news_id'=>$news_id
